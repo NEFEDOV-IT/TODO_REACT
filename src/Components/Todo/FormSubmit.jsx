@@ -1,3 +1,5 @@
+import React from "react";
+
 const FormSubmit = ({value, saveValue, saveTasks, placeholder}) => {
   return (
     <form className="form__input">

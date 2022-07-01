@@ -4,24 +4,41 @@ html, body, #root {
 
 .wrapper {
     min-height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     font-family: "Roboto", sans-serif;
     background: url("./img/background.jpg") 0 0/cover;
 }
 
 .main {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
     flex: 1 1 auto;
 }
 
 header, footer {
     color: #000;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     font-weight: bold;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     width: 100%;
     padding: 10px;
@@ -65,22 +82,42 @@ header, footer {
     line-height: 21px;
 }
 
+.input__text::-webkit-input-placeholder {
+    color: #7696BA;
+}
+
+.input__text::-moz-placeholder {
+    color: #7696BA;
+}
+
+.input__text:-ms-input-placeholder {
+    color: #7696BA;
+}
+
+.input__text::-ms-input-placeholder {
+    color: #7696BA;
+}
+
 .input__text::placeholder {
     color: #7696BA;
 }
 
 .button__add {
-    background: url("img/add-icon.svg") no-repeat;
+    background: url("./img/add-icon.svg") no-repeat;
     width: 20px;
     height: 20px;
     position: absolute;
     top: 11px;
     right: 10px;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
     transition: 0.5s;
     cursor: pointer;
 }
 
 .button__add:hover {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
     transform: rotate(180deg);
 }
 
@@ -94,6 +131,7 @@ header, footer {
 
 .checked__back {
     background: #F0F7FA;
+    -webkit-text-decoration-line: line-through;
     text-decoration-line: line-through;
 }
 
@@ -108,6 +146,7 @@ header, footer {
 .text__input-body {
     min-height: 45px;
     padding: 12px 45px;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 18px;
     line-height: 21px;
@@ -128,9 +167,10 @@ header, footer {
     background-color: #F0F7FA;
     border-radius: 50%;
     border: 2px solid #fff;
+    -moz-appearance: none;
     appearance: none;
     -webkit-appearance: none;
-    outline: 1px solid #7696BA;
+    box-shadow: 0 0 0 1px #7696BA;
 }
 
 .input__checked {
@@ -138,18 +178,25 @@ header, footer {
 }
 
 .button_close {
-    background: url("img/close-icon.svg") no-repeat;
+    background: url("./img/close-icon.svg") no-repeat;
     width: 18px;
     height: 18px;
     position: absolute;
     top: 15px;
     right: 10px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
     transition: 0.3s;
     cursor: pointer;
 }
 
 .list {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
 }
 
@@ -158,6 +205,7 @@ header, footer {
     padding: 5px;
     text-align: center;
     border: 1px solid #ff0000;
+    -webkit-box-shadow: 0 0 7px #ff0000;
     box-shadow: 0 0 7px #ff0000;
     background-color: #A9CBB8;
     margin-bottom: 8px;
@@ -184,7 +232,10 @@ header, footer {
     height: 2px;
     border-radius: 6px;
     background-color: #fff;
+    -webkit-box-shadow: 0 0 10px #000;
     box-shadow: 0 0 10px #000;
+    -webkit-transition: width 0.5s;
+    -o-transition: width 0.5s;
     transition: width 0.5s;
 }
 
@@ -198,6 +249,9 @@ header, footer {
     height: 2px;
     border-radius: 6px;
     background-color: #fff;
+    -webkit-box-shadow: 0 0 10px #000;
     box-shadow: 0 0 10px #000;
+    -webkit-transition: width 0.5s;
+    -o-transition: width 0.5s;
     transition: width 0.5s;
 }
