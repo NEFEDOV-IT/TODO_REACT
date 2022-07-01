@@ -1,0 +1,203 @@
+html, body, #root {
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    background: url("./img/background.jpg") 0 0/cover;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+}
+
+header, footer {
+    color: #000;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    background-color: #A9CBB8;
+}
+
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+@media screen and (max-width: 767px) {
+    .container {
+        width: 100%;
+    }
+}
+
+.title {
+    margin: 12px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #544a3f;
+}
+
+.form__input {
+    position: relative;
+}
+
+.input__text {
+    width: 100%;
+    padding: 10px 35px 10px 12px;
+    background-color: #F0F7FA;
+    color: #7696BA;
+    border: 1px solid #7696BA;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.input__text::placeholder {
+    color: #7696BA;
+}
+
+.button__add {
+    background: url("img/add-icon.svg") no-repeat;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 11px;
+    right: 10px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.button__add:hover {
+    transform: rotate(180deg);
+}
+
+.input-todo {
+    position: relative;
+    background: #F0F7FA;
+    border-radius: 6px;
+    border: 1px solid #7696BA;
+    margin-bottom: 8px;
+}
+
+.checked__back {
+    background: #F0F7FA;
+    text-decoration-line: line-through;
+}
+
+.input-todo.checked__back label {
+    background: rgba(196, 196, 196, 0.3);
+}
+
+.input-todo.checked__back .checked__back {
+    background: rgba(196, 196, 196, 0.3);
+}
+
+.text__input-body {
+    min-height: 45px;
+    padding: 12px 45px;
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 21px;
+    color: #7696BA;
+    text-align: left;
+    display: block;
+    word-wrap: break-word;
+    cursor: pointer;
+}
+
+.input__checkbox {
+    position: absolute;
+    top: 13px;
+    left: 14px;
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+    background-color: #F0F7FA;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: 1px solid #7696BA;
+}
+
+.input__checked {
+    background: #7696BA;
+}
+
+.button_close {
+    background: url("img/close-icon.svg") no-repeat;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.list {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.error {
+    border-radius: 6px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ff0000;
+    box-shadow: 0 0 7px #ff0000;
+    background-color: #A9CBB8;
+    margin-bottom: 8px;
+}
+
+.footer a {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    color: #544a3f;
+}
+
+.footer a:hover {
+    color: #000;
+}
+
+.footer a:after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 0 10px #000;
+    transition: width 0.5s;
+}
+
+.footer a:hover:after {
+    content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 0 10px #000;
+    transition: width 0.5s;
+}
