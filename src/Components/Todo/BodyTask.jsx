@@ -3,22 +3,32 @@ import { ShowList } from "./ShowList";
 import { FormSubmit } from "./FormSubmit";
 import JsCookie from "js-cookie";
 import { Error } from "./Error";
+import { useDispatch } from "react-redux";
+import { addTaskHigh, addTaskLow, showTasksHigh, showTasksLow } from "../../actions";
+import { TASKS_HIGH, TASKS_LOW } from "../../helpers";
 
-function BodyTask({title, placeholder}) {
+function BodyTask({title, placeholder, tasks}) {
   const [value, setValue] = useState('')
-  const [todo, setTodo] = useState([])
   const [error, setError] = useState({
     classAddTask: false, classOnTheList: false
   })
 
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    if (JsCookie.get(title)) {
-      setTodo(JSON.parse(JsCookie.get(title)))
+    if (JsCookie.get(TASKS_HIGH)) {
+      dispatch(showTasksHigh(JSON.parse(JsCookie.get(TASKS_HIGH))))
+    }
+  }, [])
+
+  useEffect(() => {
+    if (JsCookie.get(TASKS_LOW)) {
+      dispatch(showTasksLow(JSON.parse(JsCookie.get(TASKS_LOW))))
     }
   }, [])
 
   function saveTasks(e) {
-    const isRepeatValue = todo.includes(value.trim())
+    const isRepeatValue = tasks.includes(value.trim())
     const isEmptyValue = value.trim() === ''
 
     if (isEmptyValue) {
@@ -27,9 +37,14 @@ function BodyTask({title, placeholder}) {
     } else if (isRepeatValue) {
       setError({classAddTask: false, classOnTheList: true})
       setValue('')
+    } else if (title === TASKS_HIGH) {
+      JsCookie.set(TASKS_HIGH, JSON.stringify([...tasks, value]))
+      dispatch(addTaskHigh(value))
+      setError({classAddTask: false, classOnTheList: false})
+      setValue('')
     } else {
-      JsCookie.set(title, JSON.stringify([...todo, value]))
-      setTodo([...todo, value])
+      JsCookie.set(TASKS_LOW, JSON.stringify([...tasks, value]))
+      dispatch(addTaskLow(value))
       setError({classAddTask: false, classOnTheList: false})
       setValue('')
     }
@@ -51,10 +66,9 @@ function BodyTask({title, placeholder}) {
       />
       <Error error={error}/>
       <ShowList
-        todo={todo}
-        setTodo={setTodo}
         error={error}
         title={title}
+        tasks={tasks}
       />
     </div>
   )

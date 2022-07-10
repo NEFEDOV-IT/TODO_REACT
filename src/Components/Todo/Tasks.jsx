@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import JsCookie from "js-cookie";
+import { useDispatch} from "react-redux";
+import { deleteTaskHigh, deleteTaskLow } from "../../actions";
+import { TASKS_HIGH, TASKS_LOW } from "../../helpers";
 
-const Tasks = ({task, todo, setTodo, id, title}) => {
+const Tasks = ({task, title, tasks}) => {
   const [stateActive, setStateActive] = useState(true)
+  const dispatch = useDispatch()
 
   function ChangeStatus() {
     setStateActive(!stateActive)
   }
 
-  function removeTask() {
-    const tasks = todo.filter((task, index) => {
-      return index !== id
-    })
-    JsCookie.set(title, JSON.stringify(tasks))
-    setTodo(tasks)
+  function removeTask(e) {
+    const result = tasks.filter(task => task !== e.target.value)
+    JsCookie.set(title, JSON.stringify(result))
+    if (title === TASKS_HIGH) {
+      dispatch(deleteTaskHigh(e.target.value))
+    }
+    if (title === TASKS_LOW) {
+      dispatch(deleteTaskLow(e.target.value))
+    }
   }
 
   return (
@@ -23,7 +30,7 @@ const Tasks = ({task, todo, setTodo, id, title}) => {
       </label>
       <input onClick={ChangeStatus} className={stateActive ? 'input__checkbox' : 'input__checkbox input__checked'}
              type="checkbox"/>
-      <button onClick={removeTask} className="button_close"/>
+      <button value={task} onClick={removeTask} className="button_close"/>
     </div>
   )
 }

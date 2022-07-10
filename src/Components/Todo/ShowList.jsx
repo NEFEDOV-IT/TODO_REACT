@@ -1,18 +1,17 @@
 import { Tasks } from "./Tasks";
 import React from "react";
 
-const ShowList = ({todo, setTodo, title}) => {
+const ShowList = ({title, tasks}) => {
   return (
     <div className="list">
-      {todo.map((task, index) => {
+      {tasks.map((task, index) => {
         return (
           <Tasks
             key={index}
             id={index}
             task={task}
-            todo={todo}
-            setTodo={setTodo}
             title={title}
+            tasks={tasks}
           />
         )
       })}

@@ -3,4 +3,25 @@ const SHOW_ERRORS = {
   onTheList: 'This task is on the list',
 }
 
-export { SHOW_ERRORS }
+const TASKS_HIGH = 'high'
+const TASKS_LOW = 'low'
+
+const actionCreator = (type) => (text) => {
+  return {
+    type,
+    text,
+  }
+}
+
+function deleteAllCookies() {
+  const cookies = document.cookie.split(";");
+
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+    const eqPos = cookie.indexOf("=");
+    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  }
+}
+
+export { TASKS_HIGH, TASKS_LOW, SHOW_ERRORS, actionCreator }
