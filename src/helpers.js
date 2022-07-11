@@ -6,13 +6,6 @@ const SHOW_ERRORS = {
 const TASKS_HIGH = 'high'
 const TASKS_LOW = 'low'
 
-const actionCreator = (type) => (text) => {
-  return {
-    type,
-    text,
-  }
-}
-
 function deleteAllCookies() {
   const cookies = document.cookie.split(";");
 
@@ -24,4 +17,4 @@ function deleteAllCookies() {
   }
 }
 
-export { TASKS_HIGH, TASKS_LOW, SHOW_ERRORS, actionCreator }
+export { TASKS_HIGH, TASKS_LOW, SHOW_ERRORS }

@@ -1,4 +1,11 @@
-import { actionCreator } from "./helpers";
+const actionCreator = (type) => (text) => {
+  return {
+    type,
+    text,
+  }
+}
+
+const CHANGE_STATUS = 'CHANGE_STATUS'
 
 const ADD_TODO_HIGH = 'ADD TODO'
 const REMOVE_TODO_HIGH = 'REMOVE TODO'
@@ -8,6 +15,8 @@ const SHOW_TASKS_LOW = 'SHOW TASKS LOW'
 
 const ADD_TODO_LOW = 'ADD TODO LOW'
 const REMOVE_TODO_LOW = 'REMOVE TODO LOW'
+
+const changeStatusTask = actionCreator(CHANGE_STATUS)
 
 const addTaskHigh = actionCreator(ADD_TODO_HIGH)
 const deleteTaskHigh = actionCreator(REMOVE_TODO_HIGH)
@@ -19,6 +28,7 @@ const addTaskLow = actionCreator(ADD_TODO_LOW)
 const deleteTaskLow = actionCreator(REMOVE_TODO_LOW)
 
 export {
+  CHANGE_STATUS,
   SHOW_TASKS_HIGH,
   SHOW_TASKS_LOW,
   showTasksLow,
@@ -30,5 +40,6 @@ export {
   addTaskHigh,
   deleteTaskHigh,
   addTaskLow,
-  deleteTaskLow
+  deleteTaskLow,
+  changeStatusTask
 }
