@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import JsCookie from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { changeStatusTask, deleteTaskHigh, deleteTaskLow, showTasksHigh, showTasksLow } from "../../store/actions";

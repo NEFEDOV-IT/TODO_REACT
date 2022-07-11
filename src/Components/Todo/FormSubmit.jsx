@@ -8,8 +8,6 @@ const FormSubmit = ({tasks, placeholder, setError, title}) => {
   const dispatch = useDispatch()
   const [value, setValue] = useState('')
 
-  console.log(tasks)
-
   function saveTasks(e) {
     const isRepeatValue = tasks.find(item => item.name === value.trim())
     const isEmptyValue = value.trim() === ''
