@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { TASKS_HIGH, TASKS_LOW } from "../../helpers";
 
 const Todo = () => {
-  const tasksHigh = useSelector(state => state.todoHigh.tasks)
+  const tasksHigh = useSelector(state => state.todoHigh.tasksHigh)
   const tasksLow = useSelector(state => state.todoLow.tasksLow)
 
   return (

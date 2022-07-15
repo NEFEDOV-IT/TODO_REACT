@@ -4,8 +4,9 @@ import { FormSubmit } from "./FormSubmit";
 import JsCookie from "js-cookie";
 import { Error } from "./Error";
 import { useDispatch } from "react-redux";
-import { showTasksHigh, showTasksLow } from "../../store/actions";
 import { TASKS_HIGH, TASKS_LOW } from "../../helpers";
+import { showTasksHigh } from "../../storeToolkit/todoHighSlice";
+import { showTasksLow } from "../../storeToolkit/todoLowSlice";
 
 function BodyTask({title, placeholder, tasks}) {
   const dispatch = useDispatch()

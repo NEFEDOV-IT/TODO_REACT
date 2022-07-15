@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import JsCookie from "js-cookie";
 import { TASKS_HIGH } from "../../helpers";
-import { addTaskHigh, addTaskLow } from "../../store/actions";
 import { useDispatch } from "react-redux";
+import { addTodoHigh } from "../../storeToolkit/todoHighSlice";
+import { addTodoLow } from "../../storeToolkit/todoLowSlice";
 
 const FormSubmit = ({tasks, placeholder, setError, title}) => {
   const dispatch = useDispatch()
@@ -25,7 +26,7 @@ const FormSubmit = ({tasks, placeholder, setError, title}) => {
       setValue('')
     } else {
       JsCookie.set(title, JSON.stringify([...tasks, task]))
-      title === TASKS_HIGH ? dispatch(addTaskHigh(task)) : dispatch(addTaskLow(task))
+      title === TASKS_HIGH ? dispatch(addTodoHigh(task)) : dispatch(addTodoLow(task))
       setError({classAddTask: false, classOnTheList: false})
       setValue('')
     }

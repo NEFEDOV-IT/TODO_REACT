@@ -1,35 +1,32 @@
 import React from "react";
 import JsCookie from "js-cookie";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  changeStatusTaskHigh,
-  changeStatusTaskLow,
-  deleteTaskHigh,
-  deleteTaskLow,
-} from "../../store/actions";
+import { useDispatch } from "react-redux";
 import { TASKS_HIGH, TASKS_LOW } from "../../helpers";
+import { changeStatusHigh, removeTodoHigh } from "../../storeToolkit/todoHighSlice";
+import { changeStatusLow, removeTodoLow } from "../../storeToolkit/todoLowSlice";
 
 const Tasks = ({task, title, tasks}) => {
   const dispatch = useDispatch()
 
   function changeStatus(id) {
-    if (title === TASKS_HIGH) {
-      dispatch(changeStatusTaskHigh(id))
-    }
-    if (title === TASKS_LOW) {
-      dispatch(changeStatusTaskLow(id))
-    }
     const result = tasks.map(
       task => task.id === id ? {...task, active: !task.active} : task)
-    JsCookie.set(title, JSON.stringify(result))
+    if (title === TASKS_HIGH) {
+      dispatch(changeStatusHigh(id))
+      JsCookie.set(title, JSON.stringify(result))
+    }
+    if (title === TASKS_LOW) {
+      dispatch(changeStatusLow(id))
+      JsCookie.set(title, JSON.stringify(result))
+    }
   }
 
   function removeTask(id) {
     if (title === TASKS_HIGH) {
-      dispatch(deleteTaskHigh(id))
+      dispatch(removeTodoHigh(id))
     }
     if (title === TASKS_LOW) {
-      dispatch(deleteTaskLow(id))
+      dispatch(removeTodoLow(id))
     }
     const result = tasks.filter(task => task.id !== id)
     JsCookie.set(title, JSON.stringify(result))
