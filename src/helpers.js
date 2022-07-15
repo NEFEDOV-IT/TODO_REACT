@@ -17,4 +17,6 @@ function deleteAllCookies() {
   }
 }
 
+// deleteAllCookies()
+
 export { TASKS_HIGH, TASKS_LOW, SHOW_ERRORS }

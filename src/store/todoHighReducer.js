@@ -1,6 +1,4 @@
-import { ADD_TODO_HIGH, CHANGE_STATUS, REMOVE_TODO_HIGH, SHOW_TASKS_HIGH } from "./actions";
-import JsCookie from "js-cookie";
-import { TASKS_HIGH } from "../helpers";
+import { ADD_TODO_HIGH, CHANGE_STATUS_HIGH, REMOVE_TODO_HIGH, SHOW_TASKS_HIGH } from "./actions";
 
 const defaultState = {
   tasks: [],
@@ -9,15 +7,15 @@ const defaultState = {
 const todoHighReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_TODO_HIGH:
-      return [...state, action.text]
+      return {...state, tasks: [...state.tasks, action.payload]}
     case REMOVE_TODO_HIGH:
-      return state.filter(task => task.id !== action.text)
-    case CHANGE_STATUS:
-       return state.map(
-        task => task.id === action.text ? {...task, active: !task.active} : task
-      )
+      return {...state, tasks: state.tasks.filter(task => task.id !== action.payload)}
+    case CHANGE_STATUS_HIGH:
+      return {...state, tasks: state.tasks.map(
+          task => task.id === action.payload ? {...task, active: !task.active} : task
+        )}
     case SHOW_TASKS_HIGH:
-      return action.text
+      return {...state, tasks: [...action.payload]}
     default:
       return state
   }
